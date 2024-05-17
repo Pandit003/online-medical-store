@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Medicine Information</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <h2 class="text-center mb-4">Upload Medicine Information</h2>
+        <form id="medicineForm" action="/medicine" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="medicineImage">Medicine Image</label>
+            <input type="file" class="form-control-file" id="medicineImage" name="medicineImage">
+          </div>
+          <div class="form-group">
+            <label for="medicineName">Medicine Name</label>
+            <input type="text" class="form-control" id="medicineName" name="medicineName" required>
+          </div>
+          <div class="form-group">
+            <label for="brandName">Brand Name</label>
+            <input type="text" class="form-control" id="brandName" name="brandName" required>
+          </div>
+          <div class="form-group">
+            <label for="dosageForm">Dosage Form</label>
+            <input type="text" class="form-control" id="dosageForm" name="dosageForm" required>
+          </div>
+          <div class="form-group">
+            <label for="medicineDescription">Medicine Description</label>
+            <textarea class="form-control" id="medicineDescription" name="medicineDescription" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="activeIngredient">Active Ingredient</label>
+            <textarea class="form-control" id="activeIngredient" name="activeIngredient" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="medicinePrice">Medicine Price (INR)</label>
+            <input type="number" class="form-control" id="medicinePrice" name="medicinePrice" required>
+          </div>
+          <div class="form-group">
+            <label for="discountPercentage">Discount Percentage (%)</label>
+            <input type="number" class="form-control" id="discountPercentage" name="discountPercentage" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $('#medicineForm').submit(function(event){
+        event.preventDefault(); 
+  
+        var formData = {
+          "aggregateRating": {
+            "ratingValue": "5",
+            "ratingCount": "55"
+          },
+          "name": $('#medicineName').val(),
+          "image": "",
+          "sku": "",
+          "brand": {
+            "name": $('#brandName').val()
+          },
+          "productID": "", 
+          "description": $('#medicineDescription').val(),
+          "offers": {
+            "priceCurrency": "INR",
+            "offerCount": $('#discountPercentage').val(),
+            "price": $('#medicinePrice').val(),
+            "url": "" 
+          },
+          "dosageForm": $('#dosageForm').val(),
+          "activeIngredient": $('#activeIngredient').val()
+        };
+  
+        // Send form data to the server using AJAX
+        $.ajax({
+          type: "POST",
+          url: "/medicine",
+          data: JSON.stringify(formData), // Convert formData to JSON string
+          contentType: "application/json",
+          success: function(response) {
+            console.log("Data successfully submitted:", response);
+            // Optionally, perform any actions you want after successful submission
+          },
+          error: function(error) {
+            console.error("Error submitting data:", error);
+            // Optionally, handle errors here
+          }
+        });
+  
+        // Reset the form after submission
+        $('#medicineForm')[0].reset();
+      });
+    });
+  </script>
+  
+</body>
+</html>

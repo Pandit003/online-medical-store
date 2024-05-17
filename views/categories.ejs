@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Product Categories</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+  .category-card {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    text-align: center;
+  }
+  .category-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .category-card img {
+    width: 80px; 
+    height: 80px; 
+    display: block;
+    margin: 0 auto 10px;
+  }
+  .category-card h5 {
+    border-top: 2px solid #ccc; 
+    padding-top: 10px; 
+    color: black;
+    text-decoration: none !important;
+  }
+  .practices-div-container{
+    margin: 2% 20px;
+    padding: 2% 7%;
+  }
+  .img-fluid{
+    margin: 0 10px 20px;
+  }
+  .footer {
+    background-color: #f8f9fa;
+    padding: 2% 7%;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #a8a8a8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+
+  .social-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .fb:hover {
+    background-color: #1a4c98;
+  }
+
+  .yt:hover {
+    background-color: #ff0000;
+  }
+
+  .tw:hover {
+    background-color: black;
+  }
+
+  .li:hover {
+    background-color: #2e7dae;
+  }
+</style>
+</head>
+<body>
+<div class="container" style="margin: 2% 7%;">
+<h5 style="margin: 10px;">Shop by Category</h5>
+
+  <div class="row">
+    <!-- Repeat this block for each category -->
+    <div class="col-md-3 col-sm-6">
+      <a href="/product_list" style="text-decoration: none;"><div class="category-card">
+        <!-- <div class="new-label">NEW</div> -->
+        <img src="https://static2.medplusmart.com/live/webpwa/images/common/pharmacy-cat-icn.png" alt="Category Icon">
+        <h5>Pharmacy</h5>
+      </div></a>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <!-- <div class="new-label">NEW</div> -->
+          <img src="https://static2.medplusmart.com/live/bannerImage/Mart/5f0c3684ccf52aef81b84533052e4f31.png" alt="Category Icon">
+          <h5>Ayurvedic</h5>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <!-- <div class="new-label">NEW</div> -->
+          <img src="https://static2.medplusmart.com/live/bannerImage/Mart/880ae68c4dee7f6632781c46c5c7b0f9.jpg" alt="Category Icon">
+          <h5>Health & Nutrition</h5>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <!-- <div class="new-label">NEW</div> -->
+          <img src="https://static2.medplusmart.com/live/bannerImage/Mart/f44c82c87230e64243501a302d6e7da6.jpg" alt="Category Icon">
+          <h5>OTC & Health Needs</h5>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <!-- <div class="new-label">NEW</div> -->
+          <img src="https://static2.medplusmart.com/live/bannerImage/Mart/38a94856e3ab4fd14503df7a91993964.jpg" alt="Category Icon">
+          <h5>Diabetic Needs</h5>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <!-- <div class="new-label">NEW</div> -->
+          <img src="https://static2.medplusmart.com/live/bannerImage/Mart/f020c15dc4c57e001200393695d9378c.jpg" alt="Category Icon">
+          <h5>Baby Needs</h5>
+        </div>
+      </div>
+    <!-- ... -->
+  </div>
+</div>
+<div class="practices-div-container" style="background-image: url(https://static2.medplusmart.com/live/webpwa/assets/services-we-offer-bg.dc86d537b43c1cada7fd.png);">
+    <h6 class="mb-4 h5">Why Our Medical Store</h6>
+    <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                        src="https://static2.medplusmart.com/live/webpwa/assets/safe-and-secure.f87b9b29b201af66ef89.svg"
+                        alt="Maximize your savings" title="Maximize your savings" role="img"></span>
+                <h6 class="mb-3">100% Safe &amp; Secure</h6>
+                <p class="mb-0">We take all safety and hygiene measures to keep our customers safe.</p>
+            </div>
+            <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                        src="https://static2.medplusmart.com/live/webpwa/assets/online-reports.03fb335de31455e84d8f.svg"
+                        alt="Click and Pick" title="Click and Pick" role="img"></span>
+                <h6 class="mb-3">Click and Pick</h6>
+                <p class="mb-0">Click to buy a range of products across categories</p>
+            </div>
+            <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                        src="https://static2.medplusmart.com/live/webpwa/assets/home-sample-collection.513fdc0331c1185aa035.svg"
+                        alt="Home Sample Collection" title="Home Sample Collection" role="img"></span>
+                <h6 class="mb-3">Home Delivery</h6>
+                <p class="mb-0">We offer convenient home delivery of medicines &amp; general goods</p>
+            </div>
+            <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                        src="https://static2.medplusmart.com/live/webpwa/assets/compititive-prices.0424e317d16b7148a34b.svg"
+                        alt="Competitive Prices" title="Competitive Prices" role="img"></span>
+                <h6 class="mb-3">Unlimited Health Records</h6>
+                <p class="mb-0">Save all your health records (Medical Records...)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="row footer-img">
+      <div class="col-7 ">
+          <div class="row p-0">
+              <div class="col-md-4">
+                  <h5>Partners</h5>
+                  <img src="https://static2.medplusmart.com/live/webpwa/assets/MedPlusLens_icon.91aa49b753431fd536f8.svg"
+                      alt="MedPlus Lens Logo" class="img-fluid">
+              </div>
+              <div class="col">
+                  <h5>Follow us</h5>
+                  <div class="fb social-icon">
+                      <i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i>
+                  </div>
+                  <div class="yt social-icon">
+                      <i class="fa-brands fa-youtube" style="color: #ffffff;"></i>
+                  </div>
+                  <div class="tw social-icon">
+                      <i class="fa-brands fa-x-twitter" style="color: #ffffff;"></i>
+                  </div>
+                  <div class="li social-icon">
+                      <i class="fa-brands fa-linkedin-in" style="color: #ffffff;"></i>
+                  </div>
+              </div>
+              <p class="m-3 pt-3 border-top w-100">© 2022 MedPlusMart.com. All rights reserved.</p>
+          </div>
+      </div>
+      <div class="col"><img alt="footer-img" class="img-fluid"
+              src="https://static2.medplusmart.com/live/webpwa/assets/footer-img.f5bf66830dce7664349e.svg">
+      </div>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

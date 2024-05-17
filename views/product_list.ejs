@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Food Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .border-sort-btn {
+            border-radius: 20px;
+            font-size: 14px;
+            padding: 5px 10px;
+            margin-right: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .product-card {
+            border-radius: 15px;
+            max-width: 250px;
+        }
+
+        .btn-brand-gradient {
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+
+        .custom-btn-lg {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+
+        .btn-add-to-cart {
+            color: white;
+            background-color: #007bff;
+            border-radius: 20px;
+            padding: 10px 20px;
+            border: none;
+        }
+
+        .truncate-line-2 {
+            color: black;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="px-2 py-3">
+        <h2 class="px-2">Baby Food</h2>
+        <div class="align-items-center d-flex justify-content-between mb-3 px-2">
+            <div>
+                <button class="btn border-sort-btn filter mr-4 ml-0">
+                    <svg class="mr-2 mt-n1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <g id="Group_22672" data-name="Group 22672" transform="translate(-1727 -423)">
+                            <rect id="Rectangle_6527" data-name="Rectangle 6527" width="18" height="18" rx="3" transform="translate(1727 423)" fill="#fff"></rect>
+                            <path id="Icon_awesome-filter" data-name="Icon awesome-filter" d="M15.249,0H.751a.751.751,0,0,0-.53,1.28L6,7.061V13.5a.75.75,0,0,0,.32.614l2.5,1.749A.75.75,0,0,0,10,15.249V7.061l5.78-5.78A.751.751,0,0,0,15.249,0Z" transform="translate(1728 424)"></path>
+                        </g>
+                    </svg>All Filters
+                </button>
+                <strong class="font-14">Sort By:</strong>
+                <button type="button" role="button" class="btn border-sort-btn active">Popularity</button>
+                <button type="button" role="button" class="btn border-sort-btn">Discount</button>
+                <button type="button" role="button" class="btn border-sort-btn">A To Z</button>
+                <button type="button" role="button" class="btn border-sort-btn">Z To A</button>
+                <button type="button" role="button" class="btn border-sort-btn">MRP - Low To High</button>
+                <button type="button" role="button" class="btn border-sort-btn">MRP - High To Low</button>
+            </div>
+            <p class="mb-0 font-14 text-secondary"> 30 / 156 </p>
+        </div>
+        <div class="product-grid" id="product-container">
+            <!-- Dynamic product cards will be inserted here -->
+        </div>
+        <div class="mt-n2 px-2 w-100">
+            <button role="button" aria-label="LoadMore" class="btn pointer brand-secondary px-5 mt-2 btn-block rounded-pill custom-btn-lg">Load 30 More Products from Baby Food</button>
+        </div>
+    </section>
+
+    <script>
+        const products = [
+            {
+                name: "APTAMIL GOLD STAGE 2 FOLLOW UP FORMULA 400GM BIB",
+                brand: "NUTRICIA INTERNATIONAL PVT LTD",
+                price: 975.00,
+                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
+                productUrl: "/product/baby-needs_10104/baby-food_20031/aptamil-gold-stage-2-follow-up-formula-400gm-bib_apta0015"
+            },
+            {
+                name: "Similac Advance Stage 1",
+                brand: "Abbott",
+                price: 600.00,
+                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
+                productUrl: "/product/baby-needs_10104/baby-food_20031/similac-advance-stage-1"
+            },
+            {
+                name: "Nestle NAN PRO 1",
+                brand: "Nestle",
+                price: 750.00,
+                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
+                productUrl: "/product/baby-needs_10104/baby-food_20031/nestle-nan-pro-1"
+            },
+            {
+                name: "Enfamil A+ Stage 1",
+                brand: "Mead Johnson",
+                price: 850.00,
+                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
+                productUrl: "/product/baby-needs_10104/baby-food_20031/enfamil-a-stage-1"
+            },
+            {
+                name: "Farex 1 Infant Formula",
+                brand: "Farex",
+                price: 500.00,
+                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
+                productUrl: "/product/baby-needs_10104/baby-food_20031/farex-1-infant-formula"
+            },
+            {
+                name: "Farex 1 Infant Formula",
+                brand: "Farex",
+                price: 500.00,
+                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
+                productUrl: "/product/baby-needs_10104/baby-food_20031/farex-1-infant-formula"
+            },
+            {
+                name: "Farex 1 Infant Formula",
+                brand: "Farex",
+                price: 500.00,
+                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
+                productUrl: "/product/baby-needs_10104/baby-food_20031/farex-1-infant-formula"
+            },
+            {
+                name: "Farex 1 Infant Formula",
+                brand: "Farex",
+                price: 500.00,
+                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
+                productUrl: "/product/baby-needs_10104/baby-food_20031/farex-1-infant-formula"
+            }
+        ];
+
+        const productContainer = document.getElementById('product-container');
+
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.innerHTML = `
+                <div class="card mx-2 mb-2 product-card position-relative" style="min-height: 20rem;">
+                    <div class="card-body p-0">
+                        <span><button class="btn wishlist-icon btn-link no-underline" title="Add to Frequently Ordered Products">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 23.578 20.977">
+                                <path id="heart_1_" data-name="heart (1)"
+                                    d="M21.707,2.053A6.34,6.34,0,0,0,16.991,0a5.931,5.931,0,0,0-3.7,1.279,7.579,7.579,0,0,0-1.5,1.564,7.575,7.575,0,0,0-1.5-1.564A5.931,5.931,0,0,0,6.586,0,6.34,6.34,0,0,0,1.87,2.053,7.37,7.37,0,0,0,0,7.086,8.776,8.776,0,0,0,2.338,12.83a49.862,49.862,0,0,0,5.854,5.494c.811.691,1.73,1.475,2.685,2.31a1.384,1.384,0,0,0,1.823,0c.955-.835,1.875-1.619,2.686-2.31a49.841,49.841,0,0,0,5.853-5.494,8.775,8.775,0,0,0,2.338-5.744A7.369,7.369,0,0,0,21.707,2.053Zm0,0" fill="#6c757d"></path>
+                            </svg>
+                        </button></span>
+                        <a class="text-decoration-none" role="link" href="${product.productUrl}">
+                            <div class="px-2 pointer">
+                                <div class="text-center mb-2">
+                                    <div class="fadeIn custom-fadeIn-image">
+                                        <img class="d-inline-block" src="${product.imageUrl}" alt="${product.name}">
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-12 text-secondary mb-1 text-truncate">${product.brand}</p>
+                                </div>
+                                <div class="d-flex flex-column justify-content-between">
+                                    <h6 class="truncate-line-2" style="min-height: 2.375rem;">
+                                        <span title="${product.name}">${product.name}</span>
+                                    </h6>
+                                    <div>
+                                        <div style="color: black;">
+                                            <h6 class="mb-0">MRP <strong class="rupee">₹</strong>${product.price.toFixed(2)}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-footer bg-white p-2 border-0">
+                        <button role="button" type="button" class="btn-add-to-cart btn btn-block btn-brand-gradient rounded-pill custom-btn-lg">Add to Cart</button>
+                    </div>
+                </div>
+            `;
+            productContainer.appendChild(productCard);
+        });
+    </script>
+</body>
+
+</html>

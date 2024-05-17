@@ -1,0 +1,196 @@
+/* #title{
+    background-image: url(image/hero-bg.png);
+    background-position: top center;
+    background-size: cover;
+} */
+.bg-holder .container{
+    padding-top: 10%;
+    margin-left: 8% !important;
+    margin-right: 8% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.navbar{
+    padding: 0 8% !important;
+    background-color: white;
+}
+
+.navbar .navbar-brand{
+    color: #1b71a1;
+    font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 2rem;
+}
+
+.nav-item{
+    padding: 0 10px;
+}
+.nav-item .nav-link{
+    font-size: 1.2rem;
+    color: #7098be;
+}
+
+#image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    padding: 0%;
+}
+
+.homeimg{
+    width: 550px;
+}
+div.col-lg-6 h1 {
+    color: #283779;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 3rem;
+}
+.nav-item .nav-link:hover{
+    color: #283779;
+}
+.d-flex .btn{
+    margin-right: 20px;
+    color: #283779;
+    border-color: #7098be;
+}
+.d-flex .btn:hover{
+    color:white ;
+    background-color:#283779 ;
+    
+}
+.collapse .sign-in{
+    background-color: white;
+    color: #283779;
+    border-radius: 50rem;
+    padding: 6px 30px;
+}
+.collapse .sign-in:hover{
+    color:white ;
+    background-color:#283779 ;
+    
+}
+
+div.col-lg-6 .btn{
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 700;
+    border-radius: 50rem;
+    background-color: #283779;
+    padding: 6px 38px;
+    margin-top: 5%;
+}
+.quotes{
+    font-family: "Roboto", sans-serif;
+    color: #1b71a1;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+
+#py-5{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.blog{
+    width: 100%;
+    height: 5rem;
+    background-repeat: no-repeat;
+}
+.blog-text{
+    color: #283779;
+    font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-size: 2.5rem;
+  text-align: center;
+}
+/* information */
+#information{
+    padding:5% 8%;
+    background-color: #1b71a1;
+    background-repeat: no-repeat;
+}
+/* .information {
+    width: 65rem;
+    background-color: #283779;
+} */
+.information .image{
+    background-color: #1b71a1;
+}
+.information .text{
+    background-color: #1b71a1;
+    color: white;
+}
+.information .stretched-link{
+    text-decoration: none;
+}
+.information img{
+    height: 20rem;
+}
+.see-more{
+    background-color: white;
+    border-radius: 50rem;
+    padding: 6px 30px;
+    margin-top: 2%;
+    margin-left: 4%;
+}
+
+
+
+/* product */
+
+#advertise{
+    padding: 6% 8%;
+}
+.carousel{
+    height: 80%;
+}
+.carousel .card{
+    position: relative;
+    display: inline-block;
+}
+
+.card-img-top{
+    height: 17rem;
+}
+
+/* feature */
+#feature{
+    padding:5% 8%;
+}
+.feature-box{
+    text-align: center;
+}
+.icon{
+    color: #4fa4d2;
+    padding: 5%;
+}
+.icon:hover{
+    color: #283779; 
+}
+.feature-box .h3{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size:1.5rem ;
+}
+
+
+/* footer */
+
+#footer{
+    padding: 7% 15%;
+    text-align: center;
+    line-height: 1.5rem;
+    color: white;
+    background-color: #283779;
+}
+.social-icon{
+   margin: 20px 10px;
+   color: white;
+}
+.social-icon:hover{
+    color: #4fa4d2;
+}

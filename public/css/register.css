@@ -1,0 +1,51 @@
+body {
+    height: 100vh;
+    margin: 0; 
+    display: flex;
+    background-color: #405D9D !important; 
+    justify-content: center; 
+    align-items: center; 
+  }
+    *{
+         margin: 0;
+         padding: 0;
+         font-family: 'muli',sans-serif;
+         box-sizing: border-box;
+    }
+     .divider-text{
+         position: relative;
+         text-align: center;
+         margin-top: 15px;
+         margin-bottom: 15px;
+    }
+    .divider-text span{
+         padding: 7px;
+         font-size: 12px;
+         position: relative;
+         z-index: 2;
+    }
+    .divider-text:after{
+         position: absolute;
+         z-index: 1;
+    }
+    .btn-facebook{
+         background-color: #405D9D!important;
+         color: #fff!important;
+    }
+    .fa-facebook-f{
+         padding: 5px;
+    }
+    .btn-gmail{
+         background-color: #ea4335!important;
+         color: #fff!important;
+    }
+    .fa-google{
+         padding: 5px;
+    }
+    .signintext{
+        color: #7098be;
+    }
+    .signintext:hover{
+        color: white;
+        text-decoration: none;
+    }
