@@ -1,10 +1,13 @@
 const mongoose=require('mongoose');
-const mongoURL='mongodb://localhost:27017/school'
-const signupURL='mongodb://localhost:27017/userdetail'
-const medicalURL='mongodb://localhost:27017/medicalshop'
-const medicineURL='mongodb://localhost:27017/medicines'
+require('dotenv').config();
+// const signupURL='mongodb://localhost:27017/userdetail'
+// const medicalURL='mongodb://localhost:27017/medicalshop'
+// const medicineURL='mongodb://localhost:27017/medicines'
 
-mongoose.connect(medicalURL,{
+// const mongoURL='mongodb://localhost:27017/school'
+// const mongoURL=process.env.MONGODB_URL_LOCAL;
+const mongoURL=process.env.MONGODB_URL;
+mongoose.connect(mongoURL,{
     // useNewUrlParser:true,
     // useUnifiedTopology:true
 })

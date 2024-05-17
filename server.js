@@ -12,7 +12,6 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
 
-
 require('dotenv').config();
 
 const app = express();
@@ -28,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
-
+const PORT=process.env.PORT || 3000;
 var multer = require('multer');
  
 var storage = multer.diskStorage({
@@ -237,6 +236,6 @@ app.get("/dashboard", (req, res) => {
 app.get("/add_medicine", (req, res) => {
     res.render("addmedicine");
 });
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('server started at port no 3000');
 });

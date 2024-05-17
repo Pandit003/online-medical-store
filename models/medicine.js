@@ -23,3 +23,4 @@ var medicineSchema = new mongoose.Schema({
     activeIngredient: String,
 });
 module.exports = mongoose.model('medicine', medicineSchema);
+ 
