@@ -4,7 +4,7 @@ require('dotenv').config();
 // const medicalURL='mongodb://localhost:27017/medicalshop'
 // const medicineURL='mongodb://localhost:27017/medicines'
 
-// const mongoURL='mongodb://localhost:27017/school'
+// const mongoURL='mongodb+srv://pandit_003:Rohit2955@cluster0.yxky3lr.mongodb.net/medicalshop?retryWrites=true&w=majority'
 // const mongoURL=process.env.MONGODB_URL_LOCAL;
 const mongoURL=process.env.MONGODB_URL;
 mongoose.connect(mongoURL,{
