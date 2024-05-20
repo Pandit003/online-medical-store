@@ -11,6 +11,7 @@ const https = require("https");
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
+// const fetch = require('node-fetch');
 
 require('dotenv').config();
 
@@ -22,14 +23,50 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store');
+    next();
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
+
+
 const PORT=process.env.PORT || 3000;
 var multer = require('multer');
- 
+
+// const NewsAPI = require('newsapi');
+// const newsapi = new NewsAPI('e5239ed81bb94f00bbab906d1996840f');
+// newsapi.v2.everything({
+//   q: 'medicine',
+//   from: '2024-05-17',
+//   sortBy: 'popularity',
+// }).then(response => {
+//   console.log(response);
+// }); 
+const API_KEY='e5239ed81bb94f00bbab906d1996840f';
+app.get('/api/news', async (req, res) => {
+    const today = new Date();
+    const dd = String(today.getDate() - 2).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = String(today.getFullYear());
+    const date = `${yyyy}-${mm}-${dd}`;
+    const apiUrl = `https://newsapi.org/v2/everything?q=medicine&from=${date}&sortBy=popularity&apiKey=${API_KEY}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads')
@@ -87,17 +124,26 @@ app.post('/image', upload.single('image'), (req, res, next) => {
 
 app.get("/", (req, res) => {
     const user = req.session.user;
-    var display_profile="",display_img="";
-    if(user){
-     display_profile="";
-     display_img="d-none";
-    res.render("index",{ display_profile: display_profile,display_img:display_img});
-    }else{
-        display_profile="d-none";
-        display_img="";
-        res.render("index",{ display_profile: display_profile,display_img:display_img});
+    let display_profile = "";
+    let display_img = "";
+    let username = "";
+
+    if (user) {
+        username = user.name;
+        display_profile = "";
+        display_img = "d-none";
+    } else {
+        display_profile = "d-none";
+        display_img = "";
     }
+
+    res.render("index", {
+        display_profile: display_profile,
+        display_img: display_img,
+        username: username // Always pass username
+    });
 });
+
 
 
 
