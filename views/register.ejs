@@ -12,7 +12,59 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/67f07203cb.js" crossorigin="anonymous"></script>
   </head>
-  
+  <style>
+     body {
+    height: 100vh;
+    margin: 0; 
+    display: flex;
+    background-color: #405D9D !important; 
+    justify-content: center; 
+    align-items: center; 
+  }
+    *{
+         margin: 0;
+         padding: 0;
+         font-family: 'muli',sans-serif;
+         box-sizing: border-box;
+    }
+     .divider-text{
+         position: relative;
+         text-align: center;
+         margin-top: 15px;
+         margin-bottom: 15px;
+    }
+    .divider-text span{
+         padding: 7px;
+         font-size: 12px;
+         position: relative;
+         z-index: 2;
+    }
+    .divider-text:after{
+         position: absolute;
+         z-index: 1;
+    }
+    .btn-facebook{
+         background-color: #405D9D!important;
+         color: #fff!important;
+    }
+    .fa-facebook-f{
+         padding: 5px;
+    }
+    .btn-gmail{
+         background-color: #ea4335!important;
+         color: #fff!important;
+    }
+    .fa-google{
+         padding: 5px;
+    }
+    .signintext{
+        color: #7098be;
+    }
+    .signintext:hover{
+        color: white;
+        text-decoration: none;
+    }
+  </style>
   <body class="text-center" style="background-image: url(Image/hero-bg.png);background-position:top center;background-size:cover;">
       <div class="" style="width: 400px; backdrop-filter: blur(8px);">
         <article class="card-body mx-auto" style="max-width: 600px;">
@@ -45,7 +97,7 @@
                        <input name="password" class="form-control" placeholder="Create password" type="password" value="" required>
                   </div>
                   <div class="form-group">
-                       <button type="submit" class="btn btn-primary btn-block">LogIn</button>
+                       <button type="submit" class="btn btn-primary btn-block">Register</button>
                   </div>
                   <p class="text-center">Already Have an Account ? <a href="/signin" class="signintext">SignIn</a></p>
              </form>

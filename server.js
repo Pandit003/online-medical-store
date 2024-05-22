@@ -4,18 +4,20 @@ const session = require('express-session');
 const db = require('./db');
 const bodyParser = require('body-parser');
 const school = require('./models/school');
-const medicineSchema = require('./models/medicine');
+const medicineSchema = require('./models/pharmacy');
 const imgSchema = require('./models/image');
 const userdetail = require('./models/signup');
+const countries = require('./models/country');
 const https = require("https");
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-// const fetch = require('node-fetch');
+const cors = require('cors');
 
 require('dotenv').config();
 
 const app = express();
+app.use(cors());
 
 app.use(session({
     secret: 'secret_key',
@@ -38,15 +40,6 @@ app.set('view engine', 'ejs');
 const PORT=process.env.PORT || 3000;
 var multer = require('multer');
 
-// const NewsAPI = require('newsapi');
-// const newsapi = new NewsAPI('e5239ed81bb94f00bbab906d1996840f');
-// newsapi.v2.everything({
-//   q: 'medicine',
-//   from: '2024-05-17',
-//   sortBy: 'popularity',
-// }).then(response => {
-//   console.log(response);
-// }); 
 const API_KEY='e5239ed81bb94f00bbab906d1996840f';
 app.get('/api/news', async (req, res) => {
     const today = new Date();
@@ -78,22 +71,22 @@ var storage = multer.diskStorage({
  
 var upload = multer({ storage: storage });
  
-app.get('/image', (req, res) => {
-    imgSchema.find({})
-    .then((data, err)=>{
-        if(err){
-            console.log(err);
-        }
-        res.render('imagepage',{items: data})
-    })
+app.get('/image', async (req, res) => {
+    try {
+        const images = await imgSchema.find({});
+        res.render('imagepage', { images: images });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error retrieving images');
+    }
 });
- 
 
-app.post("/medicine", async (req, res) => {
+
+app.post("/pharmacy", async (req, res) => {
     try {
         const data = req.body;
-        const medicine = new medicineSchema(data);
-        const response = await medicine.save();
+        const pharmacy = new medicineSchema(data);
+        const response = await pharmacy.save();
         console.log('medicine added');
         res.status(200).json(response);
     } catch (err) {
@@ -144,9 +137,6 @@ app.get("/", (req, res) => {
     });
 });
 
-
-
-
 app.get("/signin", (req, res) => {
     res.render("signin");
 });
@@ -177,12 +167,10 @@ app.post("/signin", async (req, res) => {
         const user = await userdetail.findOne({ "email": email });
 
         if (user) {
-            // console.log("User found in database:", user);
             if (user.password === pwd) {
                 var name = user.name;
                 console.log("Password matched");
-                req.session.user = user; // Storing user data in session
-                // res.render("index", { username: name });
+                req.session.user = user; 
                 res.redirect("/");
             } else {
                 console.log("Password not matched");
@@ -198,7 +186,6 @@ app.post("/signin", async (req, res) => {
     }
 });
 
-// Middleware to check if user is authenticated
 const isAuthenticated = (req, res, next) => {
     if (req.session.user) {
         next();
@@ -210,7 +197,6 @@ const isAuthenticated = (req, res, next) => {
 app.get("/myinfo", isAuthenticated, (req, res) => {
     const user = req.session.user;
     res.render("myinfo", { user });
-    // console.log(user);
 });
 app.get("/logout", (req, res) => {
     req.session.destroy(err => {
@@ -226,9 +212,6 @@ app.get("/logout", (req, res) => {
 
 app.get("/student", async function (req, res) {
     try {
-        // const user = req.session.user;
-        // console.log(user);
-        // console.log(user.name);
         const data = await school.find();
         console.log('data fetched');
         res.status(200).json(data);
@@ -282,6 +265,31 @@ app.get("/dashboard", (req, res) => {
 app.get("/add_medicine", (req, res) => {
     res.render("addmedicine");
 });
+
+app.get("/countries", async function (req, res) {
+    try {
+        const data = await countries.find();
+        console.log('data fetched');
+        res.status(200).json(data);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'internal server error' });
+    }
+});
+
+app.post("/countries", async (req, res) => {
+    try {
+        const data = req.body;
+        const country = new countries(data);
+        const response = await country.save();
+        console.log('data saved');
+        res.status(200).json(response);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'internal server error' });
+    }
+});
+
 app.listen(PORT, () => {
     console.log('server started at port no 3000');
 });

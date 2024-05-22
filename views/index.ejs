@@ -45,12 +45,58 @@
   .carousel-control-next, .carousel-control-prev {
     width: auto;
   }
+  .lead{
+        font-family: "Ubuntu", sans-serif;
+    }
+    .practices-div-container{
+    margin: 2% 20px 0;
+    padding: 2% 7%;
+  }
+  .img-fluid{
+    margin: 0 10px 20px;
+  }
+  .footer {
+    background-color: #f8f9fa;
+    padding: 2% 7%;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #a8a8a8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+
+  .social-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .fb:hover {
+    background-color: #1a4c98;
+  }
+
+  .yt:hover {
+    background-color: #ff0000;
+  }
+
+  .tw:hover {
+    background-color: black;
+  }
+
+  .li:hover {
+    background-color: #2e7dae;
+  }
 </style>
 <body>
   <section id="title">
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-light ">
-      <a class="navbar-brand" href="#">Medicine</a>
+      <a class="navbar-brand" href="">Medicine</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -58,16 +104,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#title">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" href="#about_us">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Help</a>
+            <a class="nav-link" href="#feature">Help</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="#contact_us">Contact</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -261,7 +307,6 @@
     </div>
     </div>
 </section>
-
 <!-- feature -->
 <section id="feature">
   <div class="row">
@@ -284,16 +329,126 @@
     </div>
   </div>
 </section>
+  <!-- About 7 - Bootstrap Brain Component -->
+  <section class="py-3 py-md-5 py-xl-8" id="about_us">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+          <h2 class="mb-4 display-5 text-center">About Us</h2>
+          <p class="text-secondary mb-5 text-center lead fs-4">One of the most trusted gateways to medicines and general provision.</p>
+          <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
+        </div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="row gy-4 gy-lg-0 align-items-lg-center">
+        <div class="col-12 col-lg-6">
+          <img class="img-fluid rounded " loading="lazy" src="https://th.bing.com/th/id/OIP.07Ot8vST8Z9Q819AWwIMFwHaEP?w=295&h=180&c=7&r=0&o=5&pid=1.7" alt="About Us">
+        </div>
+        <div class="col-12 col-lg-6 col-xxl-6">
+          <div class="row justify-content-lg-end">
+            <div class="col-12 col-lg-11">
+              <div class="about-wrapper">
+                <p class="lead mb-4 mb-md-5">With an aim to eradicate fake and ineffective medicines, and supply high-quality medicines in India. 
+                    every 1 or 2 in 10 medicines are proven to be adulterated in low/medium income countries like India and our store aspires to bring about a change
+                     in this statistic. To encourage and elevate transparency in the functioning of the pharmaceutical industry.</p>
+                <div class="row gy-4 mb-4 mb-md-5">
+                  <div class="col-12 col-md-6">
+                    <div class="card border border-dark">
+                      <div class="card-body p-4">
+                        <h3 class="display-5 fw-bold text-primary text-center mb-2">370+</h3>
+                        <p class="fw-bold text-center m-0">Qualified Experts</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="card border border-dark">
+                      <div class="card-body p-4">
+                        <h3 class="display-5 fw-bold text-primary text-center mb-2">18k+</h3>
+                        <p class="fw-bold text-center m-0">Satisfied Clients</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="practices-div-container" style="background-image: url(https://static2.medplusmart.com/live/webpwa/assets/services-we-offer-bg.dc86d537b43c1cada7fd.png);">
+    <h6 class="mb-4 h5">Why Our Medical Store</h6>
+    <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                        src="https://static2.medplusmart.com/live/webpwa/assets/safe-and-secure.f87b9b29b201af66ef89.svg"
+                        alt="Maximize your savings" title="Maximize your savings" role="img"></span>
+                <h6 class="mb-3">100% Safe &amp; Secure</h6>
+                <p class="mb-0">We take all safety and hygiene measures to keep our customers safe.</p>
+            </div>
+            <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                        src="https://static2.medplusmart.com/live/webpwa/assets/online-reports.03fb335de31455e84d8f.svg"
+                        alt="Click and Pick" title="Click and Pick" role="img"></span>
+                <h6 class="mb-3">Click and Pick</h6>
+                <p class="mb-0">Click to buy a range of products across categories</p>
+            </div>
+            <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                        src="https://static2.medplusmart.com/live/webpwa/assets/home-sample-collection.513fdc0331c1185aa035.svg"
+                        alt="Home Sample Collection" title="Home Sample Collection" role="img"></span>
+                <h6 class="mb-3">Home Delivery</h6>
+                <p class="mb-0">We offer convenient home delivery of medicines &amp; general goods</p>
+            </div>
+            <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                        src="https://static2.medplusmart.com/live/webpwa/assets/compititive-prices.0424e317d16b7148a34b.svg"
+                        alt="Competitive Prices" title="Competitive Prices" role="img"></span>
+                <h6 class="mb-3">Unlimited Health Records</h6>
+                <p class="mb-0">Save all your health records (Medical Records...)</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" id="contact_us">
+    <div class="row footer-img">
+        <div class="col-7 ">
+            <div class="row p-0">
+            
+                <div class="col">
+                    <h5>Follow us</h5>
+                    <div class="fb social-icon">
+                        <i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="yt social-icon">
+                        <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="tw social-icon">
+                        <i class="fa-solid fa-phone" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="li social-icon">
+                        <i class="fa-brands fa-linkedin-in" style="color: #ffffff;"></i>
+                    </div>
+                </div>
+                <p class="m-3 pt-3 border-top w-100">© 2022 MedPlusMart.com. All rights reserved.</p>
+            </div>
+        </div>
+        <div class="col"><img alt="footer-img" class="img-fluid"
+                src="https://static2.medplusmart.com/live/webpwa/assets/footer-img.f5bf66830dce7664349e.svg">
+        </div>
+    </div>
+  </footer>
+
       <!-- Footer -->
 
-      <footer id="footer">
+      <!-- <footer id="footer">
         <i class="social-icon fa-brands fa-facebook"></i>
         <i class="social-icon fa-brands fa-twitter"></i>
         <i class="social-icon fa-brands fa-instagram"></i>
         <i class="social-icon fa-solid fa-envelope"></i>
         <p>© Copyright Medical Store</p>
        
-      </footer>
+      </footer> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -360,3 +515,5 @@
 </body>
 
 </html>
+
+  
