@@ -4,16 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby Food Products</title>
+    <title><%=productname%></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
+        body{
+            margin: 2% 7%;
+        }
         .border-sort-btn {
             border-radius: 20px;
             font-size: 14px;
             padding: 5px 10px;
             margin-right: 5px;
             border: 1px solid #ced4da;
+            font-weight: 600;
         }
 
         .product-card {
@@ -44,104 +51,219 @@
         }
 
         .product-grid {
+            margin-top: 3%;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1rem;
+        }
+        .font-12{
+            border-top: 2px solid #ccc; 
+            padding-top: 10px; 
+            color: black;
+        }
+        .practices-div-container{
+        padding: 5% 0;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding-top: 5%;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #a8a8a8;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .social-icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .fb:hover {
+            background-color: #1a4c98;
+        }
+
+        .yt:hover {
+            background-color: #ff0000;
+        }
+
+        .tw:hover {
+            background-color: black;
+        }
+
+        .li:hover {
+            background-color: #2e7dae;
+        }
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+        .filter-container .btn,
+        .filter-container .form-control {
+            margin-bottom: 0;
+        }
+        .filter-container form {
+            display: flex;
+            align-items: center;
+        }
+        .filter-container form .btn {
+            margin-left: 10px;
+        }
+        .btn-light:hover{
+            border: 1px solid #ced4da;
         }
     </style>
 </head>
 
 <body>
     <section class="px-2 py-3">
-        <h2 class="px-2">Baby Food</h2>
+        <h2 id="productname" class="px-2" style="margin-bottom: 15px; color: red;"><%=productname%></h2>
         <div class="align-items-center d-flex justify-content-between mb-3 px-2">
-            <div>
-                <button class="btn border-sort-btn filter mr-4 ml-0">
-                    <svg class="mr-2 mt-n1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                        <g id="Group_22672" data-name="Group 22672" transform="translate(-1727 -423)">
-                            <rect id="Rectangle_6527" data-name="Rectangle 6527" width="18" height="18" rx="3" transform="translate(1727 423)" fill="#fff"></rect>
-                            <path id="Icon_awesome-filter" data-name="Icon awesome-filter" d="M15.249,0H.751a.751.751,0,0,0-.53,1.28L6,7.061V13.5a.75.75,0,0,0,.32.614l2.5,1.749A.75.75,0,0,0,10,15.249V7.061l5.78-5.78A.751.751,0,0,0,15.249,0Z" transform="translate(1728 424)"></path>
-                        </g>
-                    </svg>All Filters
+            <div class="filter-container">
+                <button class="btn border-sort-btn filter mr-4 ml-0" style="font-weight: 600; font-size: medium;" onclick="toggleFilters()">
+                    All Filters   <i class="fa-solid fa-filter"></i>
                 </button>
-                <strong class="font-14">Sort By:</strong>
-                <button type="button" role="button" class="btn border-sort-btn active">Popularity</button>
-                <button type="button" role="button" class="btn border-sort-btn">Discount</button>
-                <button type="button" role="button" class="btn border-sort-btn">A To Z</button>
-                <button type="button" role="button" class="btn border-sort-btn">Z To A</button>
-                <button type="button" role="button" class="btn border-sort-btn">MRP - Low To High</button>
-                <button type="button" role="button" class="btn border-sort-btn">MRP - High To Low</button>
+                <strong class="font-14 sort-button">Sort By:</strong>
+                <button type="button" role="button" class="btn border-sort-btn sort-button active" onclick="sortMedicines('popularity',document.getElementById('searchInput').value)">Popularity</button>
+                <button type="button" role="button" class="btn border-sort-btn sort-button" onclick="sortMedicines('discount',document.getElementById('searchInput').value)">Discount</button>
+                <button type="button" role="button" class="btn border-sort-btn sort-button" onclick="sortMedicines('atoz',document.getElementById('searchInput').value)">A To Z</button>
+                <button type="button" role="button" class="btn border-sort-btn sort-button" onclick="sortMedicines('ztoa',document.getElementById('searchInput').value)">Z To A</button>
+                <button type="button" role="button" class="btn border-sort-btn sort-button" onclick="sortMedicines('mrplth',document.getElementById('searchInput').value)">MRP - Low To High</button>
+                <button type="button" role="button" class="btn border-sort-btn sort-button" onclick="sortMedicines('mrphtl',document.getElementById('searchInput').value)">MRP - High To Low</button>
+                <form class="d-flex" role="search" onsubmit="event.preventDefault(); sortMedicines('', document.getElementById('searchInput').value);">
+                    <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 18rem;">
+                    <button class="btn btn-dark" type="submit">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>    
             </div>
-            <p class="mb-0 font-14 text-secondary"> 30 / 156 </p>
         </div>
         <div class="product-grid" id="product-container">
             <!-- Dynamic product cards will be inserted here -->
         </div>
-        <div class="mt-n2 px-2 w-100">
-            <button role="button" aria-label="LoadMore" class="btn pointer brand-secondary px-5 mt-2 btn-block rounded-pill custom-btn-lg">Load 30 More Products from Baby Food</button>
+        <div class="practices-div-container" style="background-image: url(https://static2.medplusmart.com/live/webpwa/assets/services-we-offer-bg.dc86d537b43c1cada7fd.png);">
+            <h6 class="mb-4 h5">Why Our Medical Store</h6>
+            <div class="container-fluid">
+                <div class="row pt-2">
+                    <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                                src="https://static2.medplusmart.com/live/webpwa/assets/safe-and-secure.f87b9b29b201af66ef89.svg"
+                                alt="Maximize your savings" title="Maximize your savings" role="img"></span>
+                        <h6 class="mb-3">100% Safe &amp; Secure</h6>
+                        <p class="mb-0">We take all safety and hygiene measures to keep our customers safe.</p>
+                    </div>
+                    <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                                src="https://static2.medplusmart.com/live/webpwa/assets/online-reports.03fb335de31455e84d8f.svg"
+                                alt="Click and Pick" title="Click and Pick" role="img"></span>
+                        <h6 class="mb-3">Click and Pick</h6>
+                        <p class="mb-0">Click to buy a range of products across categories</p>
+                    </div>
+                    <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                                src="https://static2.medplusmart.com/live/webpwa/assets/home-sample-collection.513fdc0331c1185aa035.svg"
+                                alt="Home Sample Collection" title="Home Sample Collection" role="img"></span>
+                        <h6 class="mb-3">Home Delivery</h6>
+                        <p class="mb-0">We offer convenient home delivery of medicines &amp; general goods</p>
+                    </div>
+                    <div class="col-xl-3 col-xs-6 col-md-6 col-lg-6"><span class="img-container"><img class="img-fluid"
+                                src="https://static2.medplusmart.com/live/webpwa/assets/compititive-prices.0424e317d16b7148a34b.svg"
+                                alt="Competitive Prices" title="Competitive Prices" role="img"></span>
+                        <h6 class="mb-3">Unlimited Health Records</h6>
+                        <p class="mb-0">Save all your health records (Medical Records...)</p>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <footer class="footer">
+          <div class="row footer-img">
+              <div class="col-7 ">
+                  <div class="row p-0">
+                      <div class="col-md-4">
+                          <h5>Partners</h5>
+                          <img src="https://static2.medplusmart.com/live/webpwa/assets/MedPlusLens_icon.91aa49b753431fd536f8.svg"
+                              alt="MedPlus Lens Logo" class="img-fluid">
+                      </div>
+                      <div class="col">
+                        <h5>Follow us</h5>
+                        <a href="https://www.facebook.com/Rohitpandit12345/"><div class="fb social-icon">
+                            <i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i>
+                        </div></a>
+                        <a href="mailto:someone@example.com" id="email-icon"><div class="yt social-icon">
+                          <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+                        </div></a>
+                        <a href="whatsapp://send?phone=+91 8144542955"><div class="tw social-icon">
+                          <i class="fa-solid fa-phone" style="color: #ffffff;"></i>
+                        </div></a>
+                        <a href="https://in.linkedin.com/in/pardoom-pandit-5ba88b261 "><div class="li social-icon">
+                          <i class="fa-brands fa-linkedin-in" style="color: #ffffff;"></i>
+                        </div></a>
+                    </div>
+                      <p class="m-3 pt-3 border-top w-100">© 2022 MedPlusMart.com. All rights reserved.</p>
+                  </div>
+              </div>
+              <div class="col"><img alt="footer-img" class="img-fluid"
+                      src="https://static2.medplusmart.com/live/webpwa/assets/footer-img.f5bf66830dce7664349e.svg">
+              </div>
+          </div>
+        </footer>
     </section>
 
     <script>
-        const products = [
-            {
-                name: "APTAMIL GOLD STAGE 2 FOLLOW UP FORMULA 400GM BIB",
-                brand: "NUTRICIA INTERNATIONAL PVT LTD",
-                price: 975.00,
-                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
-                productUrl: "/product/baby-needs_10104/baby-food_20031/aptamil-gold-stage-2-follow-up-formula-400gm-bib_apta0015"
-            },
-            {
-                name: "Similac Advance Stage 1",
-                brand: "Abbott",
-                price: 600.00,
-                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
-                productUrl: "/product/baby-needs_10104/baby-food_20031/similac-advance-stage-1"
-            },
-            {
-                name: "Nestle NAN PRO 1",
-                brand: "Nestle",
-                price: 750.00,
-                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
-                productUrl: "/product/baby-needs_10104/baby-food_20031/nestle-nan-pro-1"
-            },
-            {
-                name: "Enfamil A+ Stage 1",
-                brand: "Mead Johnson",
-                price: 850.00,
-                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
-                productUrl: "/product/baby-needs_10104/baby-food_20031/enfamil-a-stage-1"
-            },
-            {
-                name: "Farex 1 Infant Formula",
-                brand: "Farex",
-                price: 500.00,
-                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
-                productUrl: "/product/baby-needs_10104/baby-food_20031/farex-1-infant-formula"
-            },
-            {
-                name: "Farex 1 Infant Formula",
-                brand: "Farex",
-                price: 500.00,
-                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
-                productUrl: "/product/baby-needs_10104/baby-food_20031/farex-1-infant-formula"
-            },
-            {
-                name: "Farex 1 Infant Formula",
-                brand: "Farex",
-                price: 500.00,
-                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
-                productUrl: "/product/baby-needs_10104/baby-food_20031/farex-1-infant-formula"
-            },
-            {
-                name: "Farex 1 Infant Formula",
-                brand: "Farex",
-                price: 500.00,
-                imageUrl: "https://static2.medplusmart.com/products/_6461e15_/APTA0015_S.jpg",
-                productUrl: "/product/baby-needs_10104/baby-food_20031/farex-1-infant-formula"
-            }
-        ];
+         function toggleFilters() {
+            const buttons = document.querySelectorAll('.sort-button');
+            buttons.forEach(button => {
+                button.classList.toggle('d-none');
+            });
+        }
+        function sortMedicines(sortBy, search) {
+        const medtype = '<%= productcall %>';
+        const url = `/medicine?medtype=${medtype}&sortBy=${sortBy}&search=${search}`;
+        // window.location.href = url;
+        fetch(url)
+        .then(response => {
+                    console.log(response);
+                    if (!response.ok) {
+                        console.error('Response was not ok:', response.status, response.statusText);
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                }) // Assuming the server responds with HTML
+        .then(data => {
+            let prod = [];
+        try {
+            const productContainer = document.getElementById('product-container');
+                productContainer.innerHTML = '';
+            prod = data;
+                if (!data || data.length === 0) {
+                    console.log("No data found");
+                    productContainer.innerHTML = '<h1 style="color:blue ; font-weight:900;">No products found</h1>';
+                }
+                else{
+                    medicinelist(prod);
+                }
+        } catch (e) {
+            console.error("Failed to parse data:", e);
+        }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+        let products = [];
+        try {
+            const data = '<%- data %>';
+            products = JSON.parse(data);
+        } catch (e) {
+            console.error("Failed to parse data:", e);
+        }
 
+        medicinelist(products);
+        function medicinelist(products){
         const productContainer = document.getElementById('product-container');
 
         products.forEach(product => {
@@ -155,23 +277,23 @@
                                     d="M21.707,2.053A6.34,6.34,0,0,0,16.991,0a5.931,5.931,0,0,0-3.7,1.279,7.579,7.579,0,0,0-1.5,1.564,7.575,7.575,0,0,0-1.5-1.564A5.931,5.931,0,0,0,6.586,0,6.34,6.34,0,0,0,1.87,2.053,7.37,7.37,0,0,0,0,7.086,8.776,8.776,0,0,0,2.338,12.83a49.862,49.862,0,0,0,5.854,5.494c.811.691,1.73,1.475,2.685,2.31a1.384,1.384,0,0,0,1.823,0c.955-.835,1.875-1.619,2.686-2.31a49.841,49.841,0,0,0,5.853-5.494,8.775,8.775,0,0,0,2.338-5.744A7.369,7.369,0,0,0,21.707,2.053Zm0,0" fill="#6c757d"></path>
                             </svg>
                         </button></span>
-                        <a class="text-decoration-none" role="link" href="${product.productUrl}">
+                        <a class="text-decoration-none" role="link" href="${product.image}">
                             <div class="px-2 pointer">
                                 <div class="text-center mb-2">
                                     <div class="fadeIn custom-fadeIn-image">
-                                        <img class="d-inline-block" src="${product.imageUrl}" alt="${product.name}">
+                                        <img class="d-inline-block" src="${product.image}" alt="${product.name}">
                                     </div>
                                 </div>
-                                <div>
-                                    <p class="font-12 text-secondary mb-1 text-truncate">${product.brand}</p>
+                                <div style="margin-left:10px;">
+                                    <p class="font-12 text-secondary mb-1 text-truncate">${product.brand.name}</p>
                                 </div>
-                                <div class="d-flex flex-column justify-content-between">
+                                <div class="d-flex flex-column justify-content-between" style="margin-left:10px;">
                                     <h6 class="truncate-line-2" style="min-height: 2.375rem;">
                                         <span title="${product.name}">${product.name}</span>
                                     </h6>
                                     <div>
                                         <div style="color: black;">
-                                            <h6 class="mb-0">MRP <strong class="rupee">₹</strong>${product.price.toFixed(2)}</h6>
+                                            <h6 class="mb-0">MRP <strong class="rupee">₹</strong>${product.offers.price}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -185,6 +307,7 @@
             `;
             productContainer.appendChild(productCard);
         });
+    }
     </script>
 </body>
 

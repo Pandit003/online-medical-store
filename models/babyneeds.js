@@ -1,4 +1,3 @@
-const { Double } = require('mongodb');
 var mongoose = require('mongoose');
 var medicineSchema = new mongoose.Schema({
     aggregateRating: {
@@ -8,7 +7,6 @@ var medicineSchema = new mongoose.Schema({
     name: String,
     image: String,
     sku: String,
-    // availability: String,
     brand: {
         name: String
     },
@@ -23,5 +21,5 @@ var medicineSchema = new mongoose.Schema({
     dosageForm : String,
     activeIngredient: String,
 });
-module.exports = mongoose.model('pharmacy', medicineSchema);
+module.exports = mongoose.model('babyneeds', medicineSchema);
  

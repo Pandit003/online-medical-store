@@ -85,47 +85,59 @@ crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <div class="row">
     <!-- Repeat this block for each category -->
-    <div class="col-md-3 col-sm-6">
-      <a href="/product_list" style="text-decoration: none;"><div class="category-card">
+    <div class="col-md-3 col-sm-6" onclick="sortMedicines('pharmacy')">
+      <a href="/pharmacy" style="text-decoration: none;">
+        <div class="category-card">
         <!-- <div class="new-label">NEW</div> -->
         <img src="https://static2.medplusmart.com/live/webpwa/images/common/pharmacy-cat-icn.png" alt="Category Icon">
         <h5>Pharmacy</h5>
-      </div></a>
+      </div>
+    </a>
     </div>
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-3 col-sm-6" onclick="sortMedicines('ayurvedic')">
+      <a href="/ayurvedic" style="text-decoration: none;">
         <div class="category-card">
           <!-- <div class="new-label">NEW</div> -->
           <img src="https://static2.medplusmart.com/live/bannerImage/Mart/5f0c3684ccf52aef81b84533052e4f31.png" alt="Category Icon">
           <h5>Ayurvedic</h5>
         </div>
+      </a>
       </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="category-card">
+      <div class="col-md-3 col-sm-6" onclick="sortMedicines('nutrition')">
+        <a href="/nutrition" style="text-decoration: none;">
+          <div class="category-card">
           <!-- <div class="new-label">NEW</div> -->
           <img src="https://static2.medplusmart.com/live/bannerImage/Mart/880ae68c4dee7f6632781c46c5c7b0f9.jpg" alt="Category Icon">
           <h5>Health & Nutrition</h5>
         </div>
+      </a>
       </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="category-card">
+      <div class="col-md-3 col-sm-6" onclick="sortMedicines('healthneeds')">
+        <a href="/healthneeds" style="text-decoration: none;">
+          <div class="category-card">
           <!-- <div class="new-label">NEW</div> -->
           <img src="https://static2.medplusmart.com/live/bannerImage/Mart/f44c82c87230e64243501a302d6e7da6.jpg" alt="Category Icon">
           <h5>OTC & Health Needs</h5>
         </div>
+      </a>
       </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="category-card">
+      <div class="col-md-3 col-sm-6" onclick="sortMedicines('diabetic')">
+        <a href="/diabetic" style="text-decoration: none;">
+          <div class="category-card">
           <!-- <div class="new-label">NEW</div> -->
           <img src="https://static2.medplusmart.com/live/bannerImage/Mart/38a94856e3ab4fd14503df7a91993964.jpg" alt="Category Icon">
           <h5>Diabetic Needs</h5>
         </div>
+      </a>
       </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="category-card">
+      <div class="col-md-3 col-sm-6" onclick="sortMedicines('babyneeds')">
+        <a href="/babyneeds" style="text-decoration: none;">
+          <div class="category-card">
           <!-- <div class="new-label">NEW</div> -->
           <img src="https://static2.medplusmart.com/live/bannerImage/Mart/f020c15dc4c57e001200393695d9378c.jpg" alt="Category Icon">
           <h5>Baby Needs</h5>
         </div>
+      </a>
       </div>
     <!-- ... -->
   </div>
@@ -172,20 +184,20 @@ crossorigin="anonymous" referrerpolicy="no-referrer">
                       alt="MedPlus Lens Logo" class="img-fluid">
               </div>
               <div class="col">
-                  <h5>Follow us</h5>
-                  <div class="fb social-icon">
-                      <i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i>
-                  </div>
-                  <div class="yt social-icon">
-                      <i class="fa-brands fa-youtube" style="color: #ffffff;"></i>
-                  </div>
-                  <div class="tw social-icon">
-                      <i class="fa-brands fa-x-twitter" style="color: #ffffff;"></i>
-                  </div>
-                  <div class="li social-icon">
-                      <i class="fa-brands fa-linkedin-in" style="color: #ffffff;"></i>
-                  </div>
-              </div>
+                <h5>Follow us</h5>
+                <a href="https://www.facebook.com/Rohitpandit12345/"><div class="fb social-icon">
+                    <i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i>
+                </div></a>
+                <a href="mailto:someone@example.com" id="email-icon"><div class="yt social-icon">
+                  <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+                </div></a>
+                <a href="whatsapp://send?phone=+91 8144542955"><div class="tw social-icon">
+                  <i class="fa-solid fa-phone" style="color: #ffffff;"></i>
+                </div></a>
+                <a href="https://in.linkedin.com/in/pardoom-pandit-5ba88b261 "><div class="li social-icon">
+                  <i class="fa-brands fa-linkedin-in" style="color: #ffffff;"></i>
+                </div></a>
+            </div>
               <p class="m-3 pt-3 border-top w-100">© 2022 MedPlusMart.com. All rights reserved.</p>
           </div>
       </div>
@@ -197,5 +209,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+  function sortMedicines(sortBy) {
+            const medtype = sortBy; 
+            const url = `/medicine?medtype=${medtype}`;
+            window.location.href = url;
+        }
+</script>
 </body>
 </html>

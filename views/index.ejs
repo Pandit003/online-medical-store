@@ -25,6 +25,16 @@
   <!--  -->
 </head>
 <style>
+  .carousel-control-prev-icon:hover, .carousel-control-next-icon:hover {
+  background-color: black !important;
+  border-radius: 50%;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 50%;
+}
+
   .carousel-item img {
       max-width: 100%;
       max-height: 300px;
@@ -127,7 +137,7 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href=""><%=  username%></a></li>
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">My Profile</a></li>
             </ul>
          </div>
           </form>
@@ -187,126 +197,24 @@
 
 
   <!-- advertise -->
-
-  <section id="advertise" style="background-image: url(Image/bg-img-6.png);">
+  <section id="advertise" style="background-image: url('Image/bg-img-6.png');">
     <div class="container">
-    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-      <div class="carousel-inner">
-        <div class="carousel-item active " >
-          <div class="row">
-            <div class="col-lg-4 col-md-6 d-md-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/ts/20240105075307/ri/750/src/images/Article_Images/ImageForArticle_23929_17044591877731537.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <!-- <p class="card-text">include calcium stearate or magnesium stearate, cellulose, docusate sodium and sodium benzoate or sodium lauryl sulfate, starch, hydroxypropyl methylcellulose, propylene glycol, sodium starch glycolate, polyethylene glycol and Red #40.</p> -->
-                  <a href="product.ejs" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 d-md-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="Image/tab1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <!-- <p class="card-text">include calcium stearate or magnesium stearate, cellulose, docusate sodium and sodium benzoate or sodium lauryl sulfate, starch, hydroxypropyl methylcellulose, propylene glycol, sodium starch glycolate, polyethylene glycol and Red #40.</p> -->
-                  <a href="#" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 d-none d-md-none d-lg-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/ts/20240105080257/ri/750/src/images/Article_Images/ImageForArticle_23929_17044597783296890.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <a href="#" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner" id="carousel-inner">
+          <!-- Dynamic content will be inserted here -->
         </div>
-        <div class="carousel-item">
-          <div class="row ">
-            <div class="col-lg-4 col-md-6 d-md-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="Image/tab1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <!-- <p class="card-text">include calcium stearate or magnesium stearate, cellulose, docusate sodium and sodium benzoate or sodium lauryl sulfate, starch, hydroxypropyl methylcellulose, propylene glycol, sodium starch glycolate, polyethylene glycol and Red #40.</p> -->
-                  <a href="#" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6  d-none d-md-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="Image/tab1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <!-- <p class="card-text">include calcium stearate or magnesium stearate, cellulose, docusate sodium and sodium benzoate or sodium lauryl sulfate, starch, hydroxypropyl methylcellulose, propylene glycol, sodium starch glycolate, polyethylene glycol and Red #40.</p> -->
-                  <a href="#" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 d-none d-md-none d-lg-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="Image/tab1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <!-- <p class="card-text">include calcium stearate or magnesium stearate, cellulose, docusate sodium and sodium benzoate or sodium lauryl sulfate, starch, hydroxypropyl methylcellulose, propylene glycol, sodium starch glycolate, polyethylene glycol and Red #40.</p> -->
-                  <a href="#" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-
-          <div class="row ">
-            <div class="col-lg-4 col-md-6 d-md-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="Image/tab1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <!-- <p class="card-text">include calcium stearate or magnesium stearate, cellulose, docusate sodium and sodium benzoate or sodium lauryl sulfate, starch, hydroxypropyl methylcellulose, propylene glycol, sodium starch glycolate, polyethylene glycol and Red #40.</p> -->
-                  <a href="#" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6  d-none d-md-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="Image/tab1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <!-- <p class="card-text">include calcium stearate or magnesium stearate, cellulose, docusate sodium and sodium benzoate or sodium lauryl sulfate, starch, hydroxypropyl methylcellulose, propylene glycol, sodium starch glycolate, polyethylene glycol and Red #40.</p> -->
-                  <a href="#" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 d-none d-md-none d-lg-block d-lg-flex justify-content-center">
-              <div class="card" style="width: 18rem;">
-                <img src="Image/tab1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Paracetamol Tablets IP 650 mg</h5>
-                  <!-- <p class="card-text">include calcium stearate or magnesium stearate, cellulose, docusate sodium and sodium benzoate or sodium lauryl sulfate, starch, hydroxypropyl methylcellulose, propylene glycol, sodium starch glycolate, polyethylene glycol and Red #40.</p> -->
-                  <a href="#" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
-    </div>
-</section>
+  </section>
+  
 <!-- feature -->
 <section id="feature">
   <div class="row">
@@ -317,11 +225,12 @@
       <h3>Medicine Info</h3>
       <p>Helps to know about the medicine.</p>
     </div>
-    <div class="feature-box col-lg-4">
+    <div class="feature-box col-lg-4"><a href="/cart" style="text-decoration: none; color: black;">
       <i class="icon fa-solid fa-cart-shopping fa-4x"></i>
       <h3>Your Cart</h3>
-      <p>See your cart what are the items here.</p>
+      <p>See your cart what are the items here.</p>  </a>
     </div>
+
     <div class="feature-box col-lg-4">
       <i class="icon fa-solid fa-phone fa-4x"></i>
       <h3>What can i help you.</h3>
@@ -330,12 +239,24 @@
   </div>
 </section>
   <!-- About 7 - Bootstrap Brain Component -->
+  <section id="py-5">
+
+    <div class="container">
+          <div class="blog bg-holder bg-size" style="background-image:url(Image/blog-post.png);background-position:top center;background-size:contain;">
+          <!--/.bg-holder-->
+
+          <h1 class="blog-text">ABOUT US</h1>
+        </div>
+    </div>
+    <!-- end of .container-->
+
+  </section>  
   <section class="py-3 py-md-5 py-xl-8" id="about_us">
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-          <h2 class="mb-4 display-5 text-center">About Us</h2>
-          <p class="text-secondary mb-5 text-center lead fs-4">One of the most trusted gateways to medicines and general provision.</p>
+          <!-- <h2 class="mb-4 display-5 text-center">About Us</h2> -->
+          <p class="text-secondary mb-5 text-center lead fs-4"  style="font-weight: 700;">One of the most trusted gateways to medicines and general provision.</p>
           <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
         </div>
       </div>
@@ -417,18 +338,18 @@
             
                 <div class="col">
                     <h5>Follow us</h5>
-                    <div class="fb social-icon">
+                    <a href="https://www.facebook.com/Rohitpandit12345/"><div class="fb social-icon">
                         <i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i>
-                    </div>
-                    <div class="yt social-icon">
-                        <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
-                    </div>
-                    <div class="tw social-icon">
-                        <i class="fa-solid fa-phone" style="color: #ffffff;"></i>
-                    </div>
-                    <div class="li social-icon">
-                        <i class="fa-brands fa-linkedin-in" style="color: #ffffff;"></i>
-                    </div>
+                    </div></a>
+                    <a href="mailto:someone@example.com" id="email-icon"><div class="yt social-icon">
+                      <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+                    </div></a>
+                    <a href="whatsapp://send?phone=+91 8144542955"><div class="tw social-icon">
+                      <i class="fa-solid fa-phone" style="color: #ffffff;"></i>
+                    </div></a>
+                    <a href="https://in.linkedin.com/in/pardoom-pandit-5ba88b261 "><div class="li social-icon">
+                      <i class="fa-brands fa-linkedin-in" style="color: #ffffff;"></i>
+                    </div></a>
                 </div>
                 <p class="m-3 pt-3 border-top w-100">© 2022 MedPlusMart.com. All rights reserved.</p>
             </div>
@@ -502,11 +423,83 @@
             }
         });
         function opensignup() {
-            // Specify the URL of the new page
+            // Specify the URL of the new page  
             var url = "signup.ejs"; // Replace this with the URL of the page you want to open
             // Open the new page
             window.open(url, "_blank");
         }
+
+        const medurl='/medicine?medtype=pharmacy&sortBy=ztoa&search=';
+        fetch(medurl).then(response=>{
+            console.log(response);
+              if (!response.ok) {
+                  console.error('Response was not ok:', response.status, response.statusText);
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+        }).then(data=>{
+              console.log("data came"+data);
+              medicinelist(data);
+        }).catch(error=>{
+          console.error('There was a problem with the fetch operation:', error);
+        });
+
+
+function medicinelist(products){
+const carouselInner = document.getElementById('carousel-inner');
+let rows = Math.ceil(products.length / 3);
+
+for (let i = 0; i < rows; i++) {
+  let carouselItem = document.createElement('div');
+  carouselItem.className = `carousel-item ${i === 0 ? 'active' : ''}`;
+
+  let rowDiv = document.createElement('div');
+  rowDiv.className = 'row';
+
+  for (let j = 0; j < 3; j++) {
+    let productIndex = i * 3 + j;
+    if (productIndex < products.length) {
+      let product = products[productIndex];
+      let colDiv = document.createElement('div');
+      colDiv.className = `col-lg-4 col-md-6 ${j === 2 ? 'd-none d-md-none d-lg-block d-lg-flex justify-content-center' : 'd-md-block d-lg-flex justify-content-center'}`;
+
+      let cardDiv = document.createElement('div');
+      cardDiv.className = 'card';
+      cardDiv.style.width = '18rem';
+
+      let img = document.createElement('img');
+      img.src = product.image;
+      img.className = 'card-img-top';
+      img.alt = '...';
+
+      let cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+
+      let cardTitle = document.createElement('h5');
+      cardTitle.className = 'card-title';
+      cardTitle.textContent = product.name;
+
+      let link = document.createElement('a');
+      link.href = product.offers.url;
+      link.className = 'btn btn-primary';
+      link.textContent = 'Buy now';
+
+      cardBody.appendChild(cardTitle);
+      cardBody.appendChild(link);
+
+      cardDiv.appendChild(img);
+      cardDiv.appendChild(cardBody);
+
+      colDiv.appendChild(cardDiv);
+      rowDiv.appendChild(colDiv);
+    }
+  }
+
+  carouselItem.appendChild(rowDiv);
+  carouselInner.appendChild(carouselItem);
+}
+}
+
     </script>
       <!-- <script>
       
