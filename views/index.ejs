@@ -16,6 +16,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
   <!--  -->
 
   <!-- font -->
@@ -101,6 +102,9 @@
   .li:hover {
     background-color: #2e7dae;
   }
+  .navbar-brand:hover{
+    color: #283779;
+  }
 </style>
 <body>
   <section id="title">
@@ -126,10 +130,10 @@
             <a class="nav-link" href="#contact_us">Contact</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
+        <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 18rem;">
           <button class="btn" type="submit">Search <i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
+        </form> -->
         <form action="/signup" method="get">
           <a href="/signin"><button type="button" name="signup-button" class="sign-in <%=display_img%>">Sign in</button> </a>
           <div id="dropdown" class="dropdown <%=display_profile%>">
@@ -137,12 +141,46 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href=""><%=  username%></a></li>
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" onclick="openProfileModal()">My Profile</a></li>
             </ul>
          </div>
           </form>
       </div>
     </nav>
+
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="profileModalLabel">Edit Profile</h5>
+              </div>
+              <div class="modal-body">
+                  <form id="profileForm">
+                      <div class="form-group mb-3">
+                          <label for="name" class="mb-2">Name</label>
+                          <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                      </div>
+                      <div class="form-group mb-3">
+                          <label for="email" class="mb-2">Email</label>
+                          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                      </div>
+                      <div class="form-group mb-3">
+                          <label for="phone" class="mb-2">Phone</label>
+                          <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                      </div>
+                      <!-- <div class="form-group">
+                          <label for="age">Age</label>
+                          <input type="number" class="form-control" id="age" placeholder="Enter your age">
+                      </div> -->
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="dismiss()">Close</button>
+                  <!-- <button type="button" class="btn btn-success" onclick="editProfile()">Edit</button> -->
+              </div>
+          </div>
+      </div>
+  </div>
     <!-- Title -->
     <div class="bg-holder bg-size"
       style="background-image:url(Image/hero-bg.png);background-position:top center;background-size:cover;">
@@ -231,10 +269,10 @@
       <p>See your cart what are the items here.</p>  </a>
     </div>
 
-    <div class="feature-box col-lg-4">
+    <div class="feature-box col-lg-4"><a href="whatsapp://send?phone=+91 8144542955" style="text-decoration: none; color: black;">
       <i class="icon fa-solid fa-phone fa-4x"></i>
       <h3>What can i help you.</h3>
-      <p>Whats your problem discus with us.</p>
+      <p>Whats your problem discus with us.</p></a>
     </div>
   </div>
 </section>
@@ -373,8 +411,40 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
       <script>
+        var data;
+        function dismiss(){
+          $('#profileModal').modal('hide');
+        }
+        function openProfileModal() {
+          $('#profileModal').modal('show');
+
+          fetch('/myinfo')
+        .then(response=>{
+          console.log(response);
+          if (!response.ok) {
+              console.error('Response was not ok:', response.status, response.statusText);
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+        }).then(data=>{
+          data=data;
+          console.log(data);
+          document.getElementById('name').value=data.name;
+            document.getElementById('email').value=data.email;
+            document.getElementById('phone').value=data.mobile;
+            // document.getElementById('age').value=data.age;
+        }).catch(error=>{
+          console.error('There was a problem with the fetch operation:', error);
+        })
+    // Use Bootstrap's modal method to show the modal
+        }
+
                 $(document).ready(function () {
             const apiUrl = '/api/news';
 
@@ -480,7 +550,8 @@ for (let i = 0; i < rows; i++) {
       cardTitle.textContent = product.name;
 
       let link = document.createElement('a');
-      link.href = product.offers.url;
+      // link.href = product.offers.url;
+      link.href = '/pharmacy?id='+product.productID;
       link.className = 'btn btn-primary';
       link.textContent = 'Buy now';
 

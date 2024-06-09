@@ -277,7 +277,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer">
                                     d="M21.707,2.053A6.34,6.34,0,0,0,16.991,0a5.931,5.931,0,0,0-3.7,1.279,7.579,7.579,0,0,0-1.5,1.564,7.575,7.575,0,0,0-1.5-1.564A5.931,5.931,0,0,0,6.586,0,6.34,6.34,0,0,0,1.87,2.053,7.37,7.37,0,0,0,0,7.086,8.776,8.776,0,0,0,2.338,12.83a49.862,49.862,0,0,0,5.854,5.494c.811.691,1.73,1.475,2.685,2.31a1.384,1.384,0,0,0,1.823,0c.955-.835,1.875-1.619,2.686-2.31a49.841,49.841,0,0,0,5.853-5.494,8.775,8.775,0,0,0,2.338-5.744A7.369,7.369,0,0,0,21.707,2.053Zm0,0" fill="#6c757d"></path>
                             </svg>
                         </button></span>
-                        <a class="text-decoration-none" role="link" href="${product.image}">
+                        <a class="text-decoration-none" role="link" href="/<%=productcall%>?id=${product.productID}">
                             <div class="px-2 pointer">
                                 <div class="text-center mb-2">
                                     <div class="fadeIn custom-fadeIn-image">
@@ -301,7 +301,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer">
                         </a>
                     </div>
                     <div class="card-footer bg-white p-2 border-0">
-                        <button role="button" type="button" class="btn-add-to-cart btn btn-block btn-brand-gradient rounded-pill custom-btn-lg">Add to Cart</button>
+                            <form action="/cart" method="post">
+                            <input type="hidden" name="productData" value='${JSON.stringify(product).replace(/'/g, " ")}'>
+                            <input type="hidden" name="productcatagory" value='<%=productcall%>'>
+                            <button role="button" type="submit" class="btn-add-to-cart btn btn-block btn-brand-gradient rounded-pill custom-btn-lg">Add to Cart</button>
+                            </form>
                     </div>
                 </div>
             `;

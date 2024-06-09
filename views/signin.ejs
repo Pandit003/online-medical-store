@@ -68,7 +68,7 @@
       <div class="" style="width: 400px; backdrop-filter: blur(8px);">
         <article class="card-body mx-auto" style="max-width: 400px;">
              <h4 class="cart-title mt-3 text-center">Login Account</h4>
-             <p class="text-center">Get Started with your free Account</p>
+             <p class="text-center"><%= alert %></p>
              <p>
                   <a href="" class="btn btn-block btn-gmail"><i class="fa fa-google"></i> Login Via gmail</a>
                   <a href="" class="btn btn-block btn-facebook"><i class="fa fa-facebook-f"></i> Login via Facebook</a>
@@ -81,13 +81,13 @@
                        <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                        </div>
-                       <input name="email" class="form-control" placeholder="Email address" type="email" required>
+                       <input name="email" id="email" class="form-control" placeholder="Email address" type="email" required>
                   </div>
                   <div class="form-group input-group">
                        <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
                        </div>
-                       <input name="password" class="form-control" placeholder="Enter password" type="password" value="" required>
+                       <input name="password" id="pwd" class="form-control" placeholder="Enter password" type="password" value="" required>
                   </div>
                   <div class="form-group">
                        <button type="submit" name="submit" class="btn btn-primary btn-block">LogIn</button>

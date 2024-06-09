@@ -10,6 +10,7 @@ const nutritionSchema = require('./models/nutrition');
 const healthneedsSchema = require('./models/healthneeds');
 const diabeticSchema = require('./models/diabetic');
 const babyneedsSchema = require('./models/babyneeds');
+const cartSchema = require('./models/cart');
 const imgSchema = require('./models/image');
 const userdetail = require('./models/signup');
 const countries = require('./models/country');
@@ -76,8 +77,69 @@ var storage = multer.diskStorage({
  
 var upload = multer({ storage: storage });
 
-app.get('/cart',(req,res)=>{
-    res.render('cart');
+app.post("/cart", async (req, res) => {
+    try {
+        if (!req.session.user) {
+            return res.redirect('/signin');
+        }
+        const userId = req.session.user.email;
+        const productData = JSON.parse(req.body.productData); 
+        const productcatagory = req.body.productcatagory; 
+        const { _id, __v, ...filteredProductData } = productData;
+
+        if (!productData) {
+            throw new Error('Product data is missing');
+        }
+
+        const productDataWithUserId = { ...filteredProductData, userId ,productcatagory};
+        const cartinfo = new cartSchema(productDataWithUserId);
+        const response = await cartinfo.save();
+        console.log('Added into cart');
+        res.redirect('/cart');
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'internal server error' });
+    }
+});
+
+app.delete('/cart/:id', async function(req, res) {
+    try {
+        var id = req.params.id;
+        const result = await cartSchema.deleteOne({ productID: id });
+
+        if (result.deletedCount === 0) {
+            return res.status(404).send('No item found to delete.');
+        }
+        res.redirect('/cart');
+        // return res.send('Data removed successfully.');
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Error while deleting data.');
+    }
+});
+
+
+app.get('/cart', async (req, res) => {
+    try {
+        if (!req.session.user) {
+            return res.redirect('/signin');
+        }
+        const userEmail = req.session.user.email;
+        const data = await cartSchema.find({ userId:userEmail });
+
+        const cartdata=data.reverse();
+        res.render('cart', { cartdata : cartdata});
+    } catch (err) {
+        console.error('Error fetching cart data:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+app.get('/product/:id',(req,res)=>{
+    var med_id=req.params.id;
+    console.log(med_id);
+    res.render('product');
 })
  
 app.get('/image', async (req, res) => {
@@ -164,9 +226,18 @@ app.get("/medicine",async(req,res)=>{
 })
 app.get("/ayurvedic",async(req,res)=>{
     try {
-        const data = await ayurvedicSchema.find();
-        console.log('data fetched');
-        res.render("product_list",{productname:"Ayurvedic",productcall:"ayurvedic",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        const id=req.query.id || '';
+        if(id!=""){
+             const data = await ayurvedicSchema.find({"productID":id});
+             res.render('product', {
+                productcall:"ayurvedic",
+                data: data
+            });
+        }
+        else{
+            const data = await ayurvedicSchema.find();
+            res.render("product_list",{productname:"Ayurvedic",productcall:"ayurvedic",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'internal server error' });
@@ -186,9 +257,18 @@ app.post("/ayurvedic", async (req, res) => {
 });
 app.get("/pharmacy",async(req,res)=>{
     try {
-        const data = await pharmacySchema.find();
-        console.log('data fetched');
+        const id=req.query.id || '';
+        if(id!=""){
+             const data = await pharmacySchema.find({"productID":id});
+             res.render('product', {
+                productcall:"pharmacy",
+                data: data
+            });
+        }
+        else{
+         const data = await pharmacySchema.find();
         res.render("product_list",{productname:"Pharmacy",productcall:"pharmacy",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'internal server error' });
@@ -208,9 +288,18 @@ app.post("/pharmacy", async (req, res) => {
 });
 app.get("/nutrition",async(req,res)=>{
     try {
-        const data = await nutritionSchema.find();
-        console.log('data fetched');
-        res.render("product_list",{productname:"Health & Nutrition",productcall:"nutrition",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        const id=req.query.id || '';
+        if(id!=""){
+             const data = await nutritionSchema.find({"productID":id});
+             res.render('product', {
+                productcall:"nutrition",
+                data: data
+            });
+        }
+        else{
+            const data = await nutritionSchema.find();
+            res.render("product_list",{productname:"Health & Nutrition",productcall:"nutrition",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'internal server error' });
@@ -230,9 +319,18 @@ app.post("/nutrition", async (req, res) => {
 });
 app.get("/healthneeds",async(req,res)=>{
     try {
-        const data = await healthneedsSchema.find();
-        console.log('data fetched');
-        res.render("product_list",{productname:"OTC & Health Needs",productcall:"healthneeds",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        const id=req.query.id || '';
+        if(id!=""){
+             const data = await healthneedsSchema.find({"productID":id});
+             res.render('product', {
+                productcall:"healthneeds",
+                data: data
+            });
+        }
+        else{
+            const data = await healthneedsSchema.find();
+            res.render("product_list",{productname:"OTC & Health Needs",productcall:"healthneeds",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'internal server error' });
@@ -252,9 +350,18 @@ app.post("/healthneeds", async (req, res) => {
 });
 app.get("/diabetic",async(req,res)=>{
     try {
-        const data = await diabeticSchema.find();
-        console.log('data fetched');
-        res.render("product_list",{productname:"Diabetic",productcall:"diabetic",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        const id=req.query.id || '';
+        if(id!=""){
+             const data = await diabeticSchema.find({"productID":id});
+             res.render('product', {
+                productcall:"diabetic",
+                data: data
+            });
+        }
+        else{
+            const data = await diabeticSchema.find();
+            res.render("product_list",{productname:"Diabetic",productcall:"diabetic",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'internal server error' });
@@ -274,9 +381,18 @@ app.post("/diabetic", async (req, res) => {
 });
 app.get("/babyneeds",async(req,res)=>{
     try {
-        const data = await babyneedsSchema.find();
-        console.log('data fetched');
-        res.render("product_list",{productname:"Baby Needs",productcall:"babyneeds",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        const id=req.query.id || '';
+        if(id!=""){
+             const data = await babyneedsSchema.find({"productID":id});
+             res.render('product', {
+                productcall:"babyneeds",
+                data: data
+            });
+        }
+        else{
+            const data = await babyneedsSchema.find();
+            res.render("product_list",{productname:"Baby Needs",productcall:"babyneeds",data:JSON.stringify(data).replace(/'/g, "\\'")});
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'internal server error' });
@@ -338,7 +454,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/signin", (req, res) => {
-    res.render("signin");
+    res.render("signin", { alert: "Get Started with your free Account" });
 });
 
 app.get("/signup", (req, res) => {
@@ -351,7 +467,7 @@ app.post("/signup", async (req, res) => {
         const newssignup = new userdetail(signupdata);
         const signupresponse = await newssignup.save();
         console.log('data saved');
-        res.redirect('/');
+        res.redirect('/signin');
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'internal server error' });
@@ -374,7 +490,7 @@ app.post("/signin", async (req, res) => {
                 res.redirect("/");
             } else {
                 console.log("Password not matched");
-                res.status(401).json({ error: "Invalid password" });
+                res.render("signin",{alert:"Invalid Password"});
             }
         } else {
             console.log("User not found");
@@ -396,8 +512,9 @@ const isAuthenticated = (req, res, next) => {
 
 app.get("/myinfo", isAuthenticated, (req, res) => {
     const user = req.session.user;
-    res.render("myinfo", { user });
+    res.send(user);
 });
+
 app.get("/logout", (req, res) => {
     req.session.destroy(err => {
         if (err) {
@@ -432,28 +549,6 @@ app.post("/student", async (req, res) => {
         console.log(err);
         res.status(500).json({ error: 'internal server error' });
     }
-});
-const axios = require('axios');
-const pharmacy = require('./models/pharmacy');
-const healthneeds = require('./models/healthneeds');
-app.get("/info", async function (req, res) {
-    const options = {
-        method: 'GET',
-        url: 'https://drug-info-and-price-history.p.rapidapi.com/1/druginfo',
-        params: {drug: 'advil'},
-        headers: {
-          'X-RapidAPI-Key': '297de513f2msh808eaf7f049dd12p1f538fjsn2c593c45f76b',
-          'X-RapidAPI-Host': 'drug-info-and-price-history.p.rapidapi.com'
-        }
-      };
-      
-      try {
-          const response = await axios.request(options);
-          console.log(response.data);
-          res.send(response.data);
-      } catch (error) {
-          console.error(error);
-      }
 });
 
 app.get("/categories", (req, res) => {
